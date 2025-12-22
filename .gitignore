@@ -1,0 +1,54 @@
+# --------------------
+# Python
+# --------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.venv/
+venv/
+ENV/
+
+# --------------------
+# IDE / Editor
+# --------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --------------------
+# OS files
+# --------------------
+.DS_Store
+Thumbs.db
+
+# --------------------
+# Logs
+# --------------------
+*.log
+
+# --------------------
+# Database
+# --------------------
+*.db
+*.sqlite3
+
+# --------------------
+# Uploaded resumes (IMPORTANT)
+# --------------------
+uploaded_resumes/
+
+# --------------------
+# Model / Cache files
+# --------------------
+*.pkl
+*.joblib
+.cache/
+
+# --------------------
+# Jupyter
+# --------------------
+.ipynb_checkpoints/
