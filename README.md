@@ -1,108 +1,70 @@
-# AI Resume Analytics App 🤖📄
+# AI Resume Analyzer 🤖📄
 
-An AI-powered Resume Analytics application that analyzes resumes, extracts key insights, and helps evaluate candidate profiles using NLP and Machine Learning techniques.
+An AI-powered application that parses PDF resumes using Natural Language Processing (NLP) to provide career recommendations, skill gap analysis, and resume scoring. Built for recruiters to visualize data and users to improve their job prospects.
 
----
 
-## 🚀 Features
 
-- Resume upload (PDF / DOCX)
-- Resume parsing using NLP
-- Skill extraction & keyword matching
-- Resume analytics and scoring
-- Job–resume relevance insights
-- Bonus resume-writing resources (YouTube integration)
-- MySQL database integration
-- Secure file handling
+## 🚀 Key Features
 
----
+* **Automated Parsing:** Extracts name, contact info, and page count using `pdfminer3` and `pyresparser`.
+* **Skill Classification:** Categorizes candidates into fields like Data Science, Web Dev, Android, iOS, and UI/UX.
+* **Interactive Recommendations:** Suggests specific skills and certificates to boost the candidate's profile.
+* **Resume Scoring:** Generates a dynamic score based on the presence of critical resume sections (Objective, Achievements, etc.).
+* **Admin Dashboard:** Features a secure login and data visualization (Pie Charts) for analyzed user profiles.
+* **Video Integration:** Contextual YouTube videos for resume writing and interview preparation.
+
+
 
 ## 🛠️ Tech Stack
 
-- **Python 3.10+**
-- **Flask**
-- **MySQL**
-- **PyMySQL**
-- **NLTK / spaCy**
-- **scikit-learn**
-- **yt-dlp** (for YouTube video metadata)
-- **HTML / CSS / Bootstrap**
-
----
-
-## 📂 Project Structure
-AIResumeAnalyticsApp/
-│
-├── App.py
-├── README.md
-├── .gitignore
-├── uploaded_resumes/ # ignored by git
-├── templates/
-├── static/
-├── models/
-└── requirements.txt
+* **UI/Frontend:** [Streamlit](https://streamlit.io/)
+* **NLP Engines:** `spaCy`, `NLTK`, `pyresparser`
+* **Database:** `MySQL` (via `PyMySQL`)
+* **Visualization:** `Plotly Express`
+* **PDF Extraction:** `pdfminer.six` / `pdfminer3`
 
 
----
 
-## ⚙️ Setup Instructions
-
-### 1️⃣ Clone the repository
+## Project Structure
 ```bash
-git clone https://github.com/your-username/AIResumeAnalyticsApp.git
-cd AIResumeAnalyticsApp
+AI-Resume-Analyzer/
+├── App.py                # Main Streamlit Application
+│── Courses.py        # Course & Video data lists
+├── Logo/                 # Static assets (logo2.png)
+├── Uploaded_Resumes/     # Temporary storage (gitignored) Ensure to create this folder
+├── requirements.txt      # Project dependencies
+└── README.md             # Documentation
+```
 
+## ⚙️ Setup & Installation
 
-2️⃣ Create virtual environment
+### 1. Database Setup
+Ensure MySQL is running. Create the database:
+```sql
+CREATE DATABASE cv;
+```
+
+## Clone the repository
+```bash
+git clone https://github.com/Mkaify/AI-Resume-Analyzer.git
+cd AI-Resume-Analyzer
+```
+
+## Create virtual environment
+```bash
 python -m venv venv
-venv\Scripts\activate   # Windows
+venv\Scripts\activate  # Windows
+```
 
-3️⃣ Install dependencies
+## Install dependencies
+```bash
 pip install -r requirements.txt
-
-4️⃣ Configure MySQL
-
-Create a MySQL database
-
-Update database credentials in App.py
-
-pymysql.connect(
-    host='localhost',
-    user='kaify',
-    password='your_password',
-    database='cv'
-)
-
-5️⃣ Run the application
+python -m spacy download en_core_web_sm
+```
+## Run App
+```bash
 streamlit run App.py
+```
 
-🔐 Security Notes
-
-Uploaded resumes are excluded from version control
-
-Database credentials should be moved to .env for production
-
-Do not commit personal resume data
-
-📈 Future Improvements
-
-Resume ranking using deep learning
-
-Job description matching
-
-Admin dashboard with analytics
-
-Export resume reports (PDF)
-
-Cloud deployment (AWS / Azure)
-
-👨‍💻 Author
-
-Muhammad Kaif ur Rehman
-Data Scientist | AI & NLP Enthusiast
-
-⭐ If you like this project
-
-Give it a ⭐ on GitHub and feel free to contribute!
-
-
+## 👨‍💻 Author
+Muhammad Kaif ur Rehman Software Engineering Student | AI & NLP Enthusiast
