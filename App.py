@@ -5,7 +5,6 @@ import time, datetime
 import io
 from PIL import Image
 import pymysql
-import pafy
 import plotly.express as px
 from streamlit_tags import st_tags
 from Courses import ds_course, web_course, android_course, ios_course, uiux_course, resume_videos, interview_videos
