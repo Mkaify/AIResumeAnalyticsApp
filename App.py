@@ -467,34 +467,46 @@ def run():
         if st.button('Login'):
             if ad_user == st.secrets["ADMIN_USER"] and ad_password == st.secrets["ADMIN_PASSWORD"]:
                 st.success("Welcome Dr Briit !")
-                # Display Data
-                cursor.execute('''SELECT*FROM user_data''')
+                
+                # --- FETCH DATA ---
+                cursor.execute('''SELECT * FROM user_data''')
                 data = cursor.fetchall()
+                
                 st.header("**User's Data**")
                 df = pd.DataFrame(data, columns=['ID', 'Name', 'Email', 'Resume Score', 'Timestamp', 'Total Page',
                                                  'Predicted Field', 'User Level', 'Actual Skills', 'Recommended Skills',
                                                  'Recommended Course'])
+                
+                # --- FIX: DECODE BYTES TO STRINGS FOR TABLE ---
+                # This makes the table look clean (removes b'...') and prevents errors
+                for col in df.columns:
+                    df[col] = df[col].apply(lambda x: x.decode('utf-8') if isinstance(x, bytes) else x)
+
                 st.dataframe(df)
                 st.markdown(get_table_download_link(df, 'User_Data.csv', 'Download Report'), unsafe_allow_html=True)
-                ## Admin Side Data
-                query = 'select * from user_data;'
-                plot_data = pd.read_sql(query, connection)
 
+                # --- PLOTTING ---
+                # Use the already cleaned 'df' for plotting instead of fetching again
+                # This ensures we are plotting strings, not bytes
+                
                 ## Pie chart for predicted field recommendations
-                labels = plot_data.Predicted_Field.unique()
-                values = plot_data.Predicted_Field.value_counts()
                 st.subheader("**Pie-Chart for Predicted Field Recommendation**")
+                
+                # We use the 'Predicted Field' column name from our clean df
+                labels = df['Predicted Field'].unique()
+                values = df['Predicted Field'].value_counts()
+                
                 fig = px.pie(df, values=values, names=labels, title='Predicted Field according to the Skills')
                 st.plotly_chart(fig)
 
-                ### Pie chart for User's👨‍💻 Experienced Level
-                labels = plot_data.User_level.unique()
-                values = plot_data.User_level.value_counts()
+                ### Pie chart for User's Experienced Level
                 st.subheader("**Pie-Chart for User's Experienced Level**")
+                labels = df['User Level'].unique()
+                values = df['User Level'].value_counts()
+                
                 fig = px.pie(df, values=values, names=labels,
                              title="Pie-Chart📈 for User's👨‍💻 Experienced Level")
                 st.plotly_chart(fig)
-
 
             else:
                 st.error("Wrong ID & Password Provided")
