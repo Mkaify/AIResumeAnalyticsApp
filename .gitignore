@@ -1,54 +1,27 @@
-# --------------------
-# Python
-# --------------------
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-*.egg-info/
-.env
-.venv/
-venv/
-ENV/
+*$py.class
 
-# --------------------
-# IDE / Editor
-# --------------------
+# Virtual Environments
+venv/
+env/
+.env
+
+# Streamlit Secrets (CRITICAL: Do not remove this)
+.streamlit/secrets.toml
+
+# Streamlit config (Optional: You can keep this if it just has theme settings)
+# .streamlit/config.toml
+
+# User Data / Uploads
+Uploaded_Resumes/
+*.pdf
+
+# IDE settings (VS Code, PyCharm)
 .vscode/
 .idea/
-*.swp
-*.swo
 
-# --------------------
-# OS files
-# --------------------
+# OS generated files
 .DS_Store
 Thumbs.db
-
-# --------------------
-# Logs
-# --------------------
-*.log
-
-# --------------------
-# Database
-# --------------------
-*.db
-*.sqlite3
-
-# --------------------
-# Uploaded resumes (IMPORTANT)
-# --------------------
-uploaded_resumes/
-
-# --------------------
-# Model / Cache files
-# --------------------
-*.pkl
-*.joblib
-.cache/
-
-# --------------------
-# Jupyter
-# --------------------
-.ipynb_checkpoints/
