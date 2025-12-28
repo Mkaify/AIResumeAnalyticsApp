@@ -46,8 +46,8 @@ CREATE DATABASE cv;
 
 ## Clone the repository
 ```bash
-git clone https://github.com/Mkaify/AI-Resume-Analyzer.git
-cd AI-Resume-Analyzer
+git clone https://github.com/Mkaify/AIResumeAnalyticsApp.git
+cd AIResumeAnalyticsApp
 ```
 
 ## Create virtual environment
@@ -59,7 +59,6 @@ venv\Scripts\activate  # Windows
 ## Install dependencies
 ```bash
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
 ```
 ## Run App
 ```bash
